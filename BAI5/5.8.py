@@ -2,11 +2,7 @@ print("Sinh vien: Hoang Van Que")
 print("Ma so SV : 245752021610045")
 print("###########################")
 ##################################
-def Sequential_Search(dlist, item):
-    """
-    Thực hiện tìm kiếm tuần tự (Sequential Search) trong danh sách dlist.
-    Trả về True và vị trí (index) nếu tìm thấy, ngược lại trả về False và -1.
-    """
+def sequential_search(dlist, item):
     pos = 0
     found = False
 
@@ -16,8 +12,16 @@ def Sequential_Search(dlist, item):
         else:
             pos = pos + 1
 
-    # Trả về kết quả tìm kiếm và vị trí
-    if found:
-        return True, pos
-    else:
-        return False, -1
+    return found, pos if found else -1
+
+# Chương trình chính
+dlist = list(map(int, input("Nhập danh sách các số cách nhau bởi dấu cách: ").split()))
+item = int(input("Nhập phần tử cần tìm: "))
+
+found, pos = sequential_search(dlist, item)
+
+if found:
+    print("Tìm thấy item tại vị trí (pos)", pos)
+else:
+    print("Không tìm thấy item trong danh sách")
+
