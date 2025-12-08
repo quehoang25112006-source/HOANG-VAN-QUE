@@ -1,35 +1,29 @@
-print("Sinh vien: Hoang Van Que")
-print("Ma so SV : 245752021610045")
-print("###########################")
-##################################
-def binary_search(dlist, value):
-    """
-    Thực hiện tìm kiếm nhị phân (Binary Search) trong danh sách đã sắp xếp.
-    Trả về True và vị trí (index) nếu tìm thấy, ngược lại trả về False và -1.
-    """
-    first = 0
-    last = len(dlist) - 1
-    found = False
-    
-    # Vị trí ban đầu là -1 (chưa tìm thấy)
-    position = -1
+print("Họ và tên :HOANG VAN QUE")
+print("MSSV:2457520221610045")
+print("#####################")
+##########################
+def binary_search(list, value):
+    lowerbound = 0
+    upperbound = len(list) - 1
 
-    while first <= last and not found:
-        # Tính chỉ mục giữa
-        midpoint = (first + last) // 2
+    while lowerbound <= upperbound:
+        midpoint = (lowerbound + upperbound) // 2
         
-        if dlist[midpoint] == value:
-            found = True
-            position = midpoint
-        elif value < dlist[midpoint]:
-            # Nếu giá trị cần tìm nhỏ hơn, tìm ở nửa đầu
-            last = midpoint - 1
+        if list[midpoint] == value:
+            return True # Đã tìm thấy
+        elif list[midpoint] < value:
+            lowerbound = midpoint + 1 # Bỏ qua nửa đầu
         else:
-            # Nếu giá trị cần tìm lớn hơn, tìm ở nửa sau
-            first = midpoint + 1
+            upperbound = midpoint - 1 # Bỏ qua nửa sau
 
-    # Trả về kết quả tìm kiếm và vị trí
-    if found:
-        return True, position
-    else:
-        return False, -1
+    return False # Không tìm thấy
+list = list(map(int, input("Nhập list (các số cách nhau bởi khoảng trắng): ").split()))
+list.sort()
+print("List sau khi sắp xếp:", list) # In list đã sắp xếp
+
+value = int(input("Nhập giá trị cần tìm: "))
+
+result = binary_search(list, value)
+print("Kết quả:", result)
+
+
